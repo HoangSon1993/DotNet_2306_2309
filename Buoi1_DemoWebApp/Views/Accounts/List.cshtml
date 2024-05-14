@@ -1,0 +1,23 @@
+﻿@{
+    List<Account> accounts = ViewBag.abcdef;
+}
+
+<table class="table table-light">
+    <thead class="table-dark">
+        <tr>
+            <th>Mã số</th>
+            <th>Têng đăng nhập</th>
+            <th>Mật khẩu</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in accounts)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.UserName</td>
+                <td>@item.Password</td>
+            </tr>
+        }
+    </tbody>
+</table>
