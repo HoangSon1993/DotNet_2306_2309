@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Student>
+
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <td>Mã số SV</td>
+            <td>Họ tên</td>
+            <td>Điểm trung bình</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.GPA</td>
+            </tr>
+        }
+    </tbody>
+</table>

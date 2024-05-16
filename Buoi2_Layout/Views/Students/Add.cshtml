@@ -1,0 +1,40 @@
+@model Student
+@section Style{
+    <style>
+        label {
+            min-width: 80px;
+        }
+    </style>
+
+}
+@{
+    ViewBag.Title = "Add Student";
+    Layout = "_Layout";
+}
+
+<h2>Add Student</h2>
+
+<form action="" class="form-control">
+    <label for="id">Id</label>
+    <input type="text" name="Id" id="id"><br/> 
+    
+    <label for="name">Name</label>
+    <input type="text" name="Name" id="name"><br/>
+    
+    <label for="gpa">GPA</label>
+    <input type="text" name="GPA" id="gpa"><br/>
+</form>
+
+
+<form asp-action="Add" class="form-control">
+    <label asp-for="Id"></label>
+    <input asp-for="Id"/><br/>
+
+    <label asp-for="Name"></label>
+    <input asp-for="Name"/><br/>
+
+    <label asp-for="GPA"></label>
+    <input asp-for="GPA"/><br/>
+
+    <button>Add</button>
+</form>
