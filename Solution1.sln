@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buoi1_DemoWebApp", "Buoi1_DemoWebApp\Buoi1_DemoWebApp.csproj", "{492116BD-67E4-43C7-B1BE-73CD1BC1C7B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buoi2_Layout", "Buoi2_Layout\Buoi2_Layout.csproj", "{437F805B-2D39-4BC9-847C-E0DCF671D0A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buoi2_Layout", "Buoi2_Layout\Buoi2_Layout.csproj", "{437F805B-2D39-4BC9-847C-E0DCF671D0A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buoi2_BaiTapDungTemplate", "Buoi2_BaiTapDungTemplate\Buoi2_BaiTapDungTemplate.csproj", "{5CC74C24-9527-46EE-87D4-55062BB01286}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{437F805B-2D39-4BC9-847C-E0DCF671D0A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{437F805B-2D39-4BC9-847C-E0DCF671D0A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{437F805B-2D39-4BC9-847C-E0DCF671D0A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CC74C24-9527-46EE-87D4-55062BB01286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CC74C24-9527-46EE-87D4-55062BB01286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CC74C24-9527-46EE-87D4-55062BB01286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CC74C24-9527-46EE-87D4-55062BB01286}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
