@@ -20,5 +20,10 @@ namespace Eshop.Models
 
         // Collection navigation property cho khóa ngoại từ Product
         public List<Product> Products { get; set; }
+
+        public ProductType()
+        {
+            Status = true;
+        }
     }
 }

@@ -50,5 +50,11 @@ namespace Eshop.Models
 
         // Collection navigation property cho khóa ngoại từ Cart
         public List<Cart> Carts { get; set; }
+
+        public Account()
+        {
+            IsAdmin = false;
+            Status = true;
+        }
     }
 }
