@@ -44,7 +44,7 @@ namespace Eshop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([Bind("Username, Passwork, Email")] Account account)
+        public IActionResult Create([Bind("Username, Password, Email, Status")] Account account)
         {
             if (_context.Accounts.Any(a => a.Username == account.Username))
             {
@@ -57,7 +57,7 @@ namespace Eshop.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -72,15 +72,17 @@ namespace Eshop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(int? accountId,[Bind("Id, Username, Password, Email, Phone, Address, FullName, Avatar")] Account account)
+        public IActionResult Edit(int? accountId, [Bind("Id, Username, Password, Email, Status")] Account account)
         {
             if (accountId != account.Id)
             {
                 return NotFound();
             }
-            
+
             _context.Accounts.Update(account);
             _context.SaveChanges();
+
+            // ViewBag.ErrorMsg = "";
 
             return RedirectToAction("Index");
         }
@@ -97,6 +99,45 @@ namespace Eshop.Controllers
             if (account != null) _context.Accounts.Remove(account);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(string Username, string Password)
+        {
+            var user = _context.Accounts.FirstOrDefault(a => a.Username == Username && a.Password == Password);
+            if (user != null)
+            {
+                //CookieOptions options = new CookieOptions()
+                //{
+                //    Expires = DateTime.Now.AddSeconds(10)
+                //};
+                //HttpContext.Response.Cookies.Append("FullName", user.FullName, options);
+
+                HttpContext.Session.SetString("FullName", user.FullName);
+                HttpContext.Session.SetInt32("Id", user.Id);
+
+
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.ErrorMsg = "Tài khoản hoặc mật khẩu không hợp lệ";
+                return View();
+            }
+        }
+
+        public IActionResult Logout()
+        {
+            //HttpContext.Response.Cookies.Delete("FullName");
+            
+            HttpContext.Session.Remove("FullName");
+            return RedirectToAction("Index","Home");
         }
     }
 }

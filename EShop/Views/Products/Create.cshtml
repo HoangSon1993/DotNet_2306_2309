@@ -1,0 +1,42 @@
+﻿@model Eshop.Models.Product
+
+<form asp-action="Create" method="post" enctype="multipart/form-data" class="col-md-6 m-auto mt-5">
+    <div class="form-control">
+        <label asp-for="SKU"></label>
+        <input asp-for="SKU" class="form-group">
+    </div>
+    <div class="form-control">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-group">
+    </div>
+    <div class="form-control">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-group">
+    </div>
+    <div class="form-control">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-group">
+    </div>
+    <div class="form-control">
+        <label asp-for="Stock"></label>
+        <input asp-for="Stock" class="form-group">
+    </div>
+    @* ===== Loai san pham ===== *@
+    <div class="form-control mb-2">
+        <label asp-for="ProductTypeId"></label>
+        <select asp-for="ProductTypeId" class="form-control" asp-items="ViewBag.ProductTypes"></select>
+    </div>
+
+    <div class="form-control">
+        <label asp-for="ImageFile"></label>
+        <input asp-for="ImageFile" class="form-group">
+    </div>
+
+    <button class="btn btn-success mt-2">Tạo sản phẩm</button>
+
+    @if (ViewBag.ErrorMsg != null)
+    {
+        <p class="text-danger">@ViewBag.ErrorMsg</p>
+    }
+
+</form>

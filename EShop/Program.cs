@@ -10,6 +10,14 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<EshopContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Eshop")));
 
+// Thêm d?ch v? Session
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = "EshopSession";
+    options.IdleTimeout = new TimeSpan(15, 0, 0, 0);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +32,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSession(); // S? d?ng d?ch v? Session ?ã c?u hình bên trên.
 
 app.UseAuthorization();
 

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Eshop.Models.Invoice>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<table class="table table-light">
+    <thead class="table-dark">
+        <tr>
+            <td>@Html.DisplayNameFor(Model => Model.Code)</td>
+            <td>@Html.DisplayNameFor(Model => Model.IssuedDate)</td>
+            <td>@Html.DisplayNameFor(Model => Model.ShippingAddress)</td>
+            <td>@Html.DisplayNameFor(Model => Model.Total)</td>
+            <td>Chức năng</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Code</td>
+                <td>@item.IssuedDate</td>
+                <td>@item.ShippingAddress</td>
+                <td>@item.Total.ToString("#,##0")</td>
+                <td>
+                    <a href="/invoices/details/@item.Id">Chi tiết</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

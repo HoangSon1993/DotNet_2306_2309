@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Eshop.Models.Product>
+
+<a asp-action="Create" class="btn btn-primary mb-2">Thêm Sản phẩm</a>
+<table class="table table-light">
+    <thead class="table-dark">
+    <tr>
+
+        <th>@Html.DisplayNameFor(Model => Model.Image)</th>
+        <th>@Html.DisplayNameFor(Model => Model.Name)</th>
+        <th>@Html.DisplayNameFor(Model => Model.Description)</th>
+        <th>@Html.DisplayNameFor(Model => Model.Price)</th>
+        <th>@Html.DisplayNameFor(Model => Model.Stock)</th>
+        <th>@Html.DisplayNameFor(Model => Model.ProductType)</th>
+        <th>Chức năng</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="images/product/@item.Image" style="width: 80px;"/>
+            </td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.Price.ToString("#,##0")</td>
+            <td>@item.Stock</td>
+            <td>@item.ProductType.Name</td>
+            <td>
+                <a class="btn btn-primary" asp-action="Detail" asp-route-id="@item.Id">Chi tiết</a>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Chỉnh sửa</a>
+                <form class="d-inline" asp-action="Delete" method="post" asp-route-id="@item.Id" onclick="return confirm('Bạn có chắc chắn muốn xoá hay không?')">
+                    <button class="btn btn-danger">Xoá</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

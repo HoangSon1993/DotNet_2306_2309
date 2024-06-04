@@ -1,0 +1,62 @@
+﻿@model Eshop.Models.Product
+
+@{
+    var maxQuantity = Math.Min(@Model.Stock, 20);
+}
+
+<div class="row">
+    <div class="col-md">
+        <img src="/images/product/@Model.Image" alt="@Model.Name" class="w-75">
+    </div>
+    <div class="col-md">
+        <dl>
+            <dt>@Html.DisplayNameFor(Model => Model.SKU)</dt>
+            <dd>@Model.SKU</dd>
+        </dl>
+        <dl>
+            <dt>@Html.DisplayNameFor(Model => Model.Name)</dt>
+            <dd>@Model.Name</dd>
+        </dl>
+        <dl>
+            <dt>@Html.DisplayNameFor(Model => Model.Description)</dt>
+            <dd>@Model.Description</dd>
+        </dl>
+        <dl>
+            <dt>@Html.DisplayNameFor(Model => Model.Stock)</dt>
+            <dd>@Model.Stock</dd>
+        </dl>
+        <dl>
+            <dt>@Html.DisplayNameFor(Model => Model.Price)</dt>
+            <dd>@Model.Price</dd>
+        </dl>
+        <dl>
+            <dt>@Html.DisplayNameFor(Model => Model.ProductType)</dt>
+            <dd>@Model.ProductType.Name</dd>
+        </dl>
+        <dl>
+            <dt>@Html.DisplayNameFor(Model => Model.Stock)</dt>
+            <dd>@Model.Stock</dd>
+        </dl>
+
+        @if (Model.Stock > 0)
+        {
+            <form asp-controller="Cards" asp-action="Add" asp-route-productId="@Model.Id">
+                <select name="quantity" id="quantity">
+                    @for (int i = 1; i <= maxQuantity; i++)
+                    {
+                        <option value="@i">@i</option>
+                    }
+                </select>
+                <button class="btn btn-success">Thêm vào giỏ hàng</button>
+            </form>
+        }
+        else
+        {
+            <p class="text-danger">Sản phẩm tạm hết hàng!</p>
+        }
+    </div>
+    <a asp-action="Index" class="btn btn-success">Back to list</a>
+</div>
+
+
+

@@ -1,0 +1,33 @@
+@model IEnumerable<Eshop.Models.Product>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-3">
+            <div class="card h-100">
+                <a asp-action="Detail" asp-route-id="@item.Id" >
+                    <img class="card-img-top" src="~/images/product/@item.Image" alt="@item.Name">
+                </a>
+                <div class="card-body">
+                    <a asp-action="Detail" asp-route-id="@item.Id" class="text-decoration-none">
+                        <h4 class="card-title">@item.Name</h4>
+                    </a>
+                    <p class="card-text">@item.Description</p>
+                </div>
+                <div class="card-footer">
+                    <form asp-action="Add" asp-controller="Cards" asp-route-productId="@item.Id">
+                        <button class="btn btn-success">
+                            <i class="fa fa-cart-plus"></i>  @item.Price.ToString("#,##0")
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

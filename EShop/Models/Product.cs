@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,6 +39,9 @@ namespace Eshop.Models
         [DisplayName("Ảnh minh họa")]
         public string Image { get; set; }
 
+        [NotMapped, DisplayName("Ảnh minh hoạ")]
+        public IFormFile ImageFile { get; set; }
+
         [DisplayName("Còn hiệu lực")]
         public bool Status { get; set; }
 
@@ -46,5 +50,11 @@ namespace Eshop.Models
 
         // Collection navigation property cho khóa ngoại từ InvoiceDetail
         public List<InvoiceDetail> InvoiceDetails { get; set; }
+
+        public Product()
+        {
+            Status = true;
+            Image = "no Img";
+        }
     }
 }

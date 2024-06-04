@@ -15,6 +15,9 @@ namespace EShop.Controllers
 
         public IActionResult Index()
         {
+            //ViewBag.FullName = HttpContext.Request.Cookies["FullName"];
+
+                ViewBag.FullName = HttpContext.Session.GetString("FullName");
             return View();
         }
 

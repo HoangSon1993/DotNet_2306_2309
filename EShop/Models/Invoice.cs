@@ -40,5 +40,11 @@ namespace Eshop.Models
 
         // Collection navigation property cho khóa ngoại từ InvoiceDetail
         public List<InvoiceDetail> InvoiceDetails { get; set; }
+
+        public Invoice()
+        {
+            IssuedDate = DateTime.Now;
+            Status = true;
+        }
     }
 }

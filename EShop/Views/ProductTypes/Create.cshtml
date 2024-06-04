@@ -6,4 +6,8 @@
         <input asp-for="Name" class="form-control">
     </div>
     <Button class="btn btn-success mt-2">Create</Button>
+    @if (ViewBag.ErrorMsg != null)
+    {
+        <p class="text-danger">@ViewBag.ErrorMsg</p>
+    }
 </form>

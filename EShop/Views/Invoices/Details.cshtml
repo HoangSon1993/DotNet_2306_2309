@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Eshop.Models.InvoiceDetail>
+<h1 
+    @* style="color: transparent; background-image: linear-gradient(blue, violet)" *@
+    >Hoá đơn số:   ....</h1>
+<div>
+    <table class="table table-light">
+        <thead>
+            <tr>
+                <td>@Html.DisplayNameFor(Model => Model.Product.Image)</td>
+                <td>@Html.DisplayNameFor(Mode => Mode.Invoice.IssuedDate)</td>
+                <td>@Html.DisplayNameFor(Model => Model.Product.Name)</td>
+                <td>@Html.DisplayNameFor(Model => Model.Product.Price)</td>
+                <td>@Html.DisplayNameFor(Model => Model.Quantity)</td>
+                <td>Thành Tiền</td>
+
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/images/product/@item.Product.Image" alt="@item.Product.Name" width="80px">
+                    </td>
+                    <td>
+                        @item.Invoice.IssuedDate.ToString("dd-MM-yy")
+                    </td>
+
+                    <td>@item.Product.Name</td>
+
+                    <td>@item.Product.Price.ToString("#,##0")</td>
+
+                    <td>@item.Quantity</td>
+                    <td>@((item.Quantity * item.Product.Price).ToString("#,##0"))</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-end font-weight-bold">Tổng tiền: @ViewBag.Total.ToString("#,##0")</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
